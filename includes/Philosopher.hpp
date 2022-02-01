@@ -7,9 +7,9 @@
 class Philosopher {
   public:
   Info &info_;
+  int index_;
 
   private:
-  int index_;
   std::mutex *left_;
   std::mutex *right_;
   std::mutex access_to_last_meal_;
@@ -24,6 +24,13 @@ class Philosopher {
   millisec outputLog(const char *str);
   void setLastmealTime(millisec time);
   millisec readLastmealTime();
+
+  // actions
+  void shakeForks();
+  void eatMeal();
+  void releaseForks();
+  void sleepWell();
+  void think();
 };
 
 #endif /* PHILOSOPHERS_PLUS_INCLUDES_PHILOSOPHER */

@@ -6,38 +6,35 @@ void philo_routine(Philosopher &philo, Info &info) {
   philo.setLastmealTime(getTime());
 
   if (info.philo_num == 1) {
-    output_log(p, TAKEN_FORK);
+    philo.outputLog(TAKEN_FORK);
     return;
   }
-  if (p->index % 2 == 0)
-    my_usleep(1);
+  if (philo.index_ % 2 == 0)
+    myUsleep(1);
   while (!info.isDead() && !info.isFullfilled()) {
-    shake_forks(p);
-    eat_meal(p);
-    release_forks(p);
-    sleep_well(p);
-    think_about_truth(p);
+    philo.shakeForks();
+    philo.eatMeal();
+    philo.releaseForks();
+    philo.sleepWell();
+    philo.think();
   }
   return;
 }
 
-void doctor_routine(Philosopher &philo) {
-  t_philo *p;
+void doctor_routine(Philosopher &philo, Info &info) {
   long now;
   long lasttime;
 
-  p = (t_philo *)philo;
-  while (!is_dead(p) && !is_fullfilled(p)) {
-    usleep(1000);
-    pthread_mutex_lock(&p->info->print);
+  while (!info.isDead() && !info.isFullfilled()) {
+    myUsleep(1000);
+    info.print.lock();
     now = getTime();
     lasttime = philo.readLastmealTime();
-    if (now - lasttime >= p->info->params[TIME_TO_DIE] &&
-        p->info->is_dead == false) {
-      printf("%ld %d died\n", now, p->index);
-      p->info->is_dead = true;
+    if (now - lasttime >= info.time_die && info.is_dead == false) {
+      printf("%ld %d died\n", now, philo.index_);
+      info.is_dead = true;
     }
-    pthread_mutex_unlock(&p->info->print);
+    info.print.unlock();
   }
   return;
 }
