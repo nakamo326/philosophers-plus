@@ -19,7 +19,9 @@ struct Info {
   Info() {}
   ~Info() {}
 
-  Info(int argc, const char *argv);
+  Info(int argc, char **argv);
+
+  void init();
 
   private:
   bool isInvalidRange(long num);

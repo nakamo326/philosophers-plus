@@ -1,6 +1,6 @@
 #include "Info.hpp"
 
-Info::Info(int argc, const char *argv) {
+Info::Info(int argc, char **argv) {
   if (!(argc == 5 || argc == 6))
     throw std::length_error("arguments number is not valid.");
 
@@ -22,3 +22,5 @@ long Info::getNum(std::string &str) {
     throw std::range_error("input num is not valid range.");
   return (tmp);
 }
+
+void Info::init() {}
