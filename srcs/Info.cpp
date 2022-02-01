@@ -1,6 +1,6 @@
 #include "Info.hpp"
 
-Info::Info(int argc, char **argv) {
+Info::Info(int argc, char **argv) : is_dead(false) {
   if (!(argc == 5 || argc == 6))
     throw std::length_error("arguments number is not valid.");
 
@@ -10,6 +10,10 @@ Info::Info(int argc, char **argv) {
   time_eat = getNum(args[3]);
   time_sleep = getNum(args[4]);
   limit_times = argc == 6 ? getNum(args[5]) : -1;
+
+  if (philo_num % 2 == 1)
+    is_odd = true;
+  forks.reserve(philo_num);
 }
 
 bool Info::isInvalidRange(long num) {
@@ -22,5 +26,3 @@ long Info::getNum(std::string &str) {
     throw std::range_error("input num is not valid range.");
   return (tmp);
 }
-
-void Info::init() {}

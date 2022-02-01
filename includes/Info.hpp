@@ -4,7 +4,6 @@
 #include "philosophers.hpp"
 
 struct Info {
-  int params[5];
   int philo_num;
   millisec time_die;
   millisec time_eat;
@@ -20,8 +19,6 @@ struct Info {
   ~Info() {}
 
   Info(int argc, char **argv);
-
-  void init();
 
   private:
   bool isInvalidRange(long num);
