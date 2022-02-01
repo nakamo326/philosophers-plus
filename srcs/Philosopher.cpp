@@ -1,20 +1,29 @@
 #include "Philosopher.hpp"
 
-Philosopher::Philosopher(int index, Info &info)
+#include "Info.hpp"
+
+Philosopher::Philosopher()
+    : info_(nullptr),
+      index_(0),
+      left_(nullptr),
+      right_(nullptr),
+      times_of_finished_meal_(0) {}
+
+Philosopher::Philosopher(int index, Info *info)
     : info_(info), index_(index), times_of_finished_meal_(0) {
   int i = index - 1;
-  left_ = &info.forks[i];
-  right_ = &info.forks[(i + info.philo_num - 1) % info.philo_num];
+  left_ = &info->forks[i];
+  right_ = &info->forks[(i + info->philo_num - 1) % info->philo_num];
 }
 
 millisec Philosopher::outputLog(const char *str) {
   millisec time;
 
   time = getTime();
-  if (!info_.isDead() && !info_.isFullfilled()) {
-    info_.print.lock();
+  if (!info_->isDead() && !info_->isFullfilled()) {
+    info_->print.lock();
     printf("%ld %d%s\n", time, index_, str);
-    info_.print.unlock();
+    info_->print.unlock();
   }
   return (time);
 }
@@ -54,22 +63,22 @@ void Philosopher::releaseForks() {
 
 void Philosopher::eatMeal() {
   setLastmealTime(outputLog(EATING));
-  myUsleep(info_.time_eat);
+  myUsleep(info_->time_eat);
   times_of_finished_meal_++;
-  if (times_of_finished_meal_ == info_.limit_times) {
-    info_.print.lock();
-    info_.fullfill_num++;
-    info_.print.unlock();
+  if (times_of_finished_meal_ == info_->limit_times) {
+    info_->print.lock();
+    info_->fullfill_num++;
+    info_->print.unlock();
   }
 }
 
 void Philosopher::sleepWell() {
   outputLog(SLEEPING);
-  myUsleep(info_.time_sleep);
+  myUsleep(info_->time_sleep);
 }
 
 void Philosopher::think() {
   outputLog(THINKING);
-  if (info_.is_odd && index_ % 2 == 1)
+  if (info_->is_odd && index_ % 2 == 1)
     myUsleep(10);
 }

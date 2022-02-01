@@ -5,7 +5,7 @@
 
 class Philosopher {
   public:
-  Info &info_;
+  Info *info_;
   int index_;
 
   private:
@@ -17,8 +17,8 @@ class Philosopher {
 
   public:
   Philosopher();
-  Philosopher(int index, Info &info);
-  ~Philosopher();
+  Philosopher(int index, Info *info);
+  ~Philosopher() {}
 
   millisec outputLog(const char *str);
   void setLastmealTime(millisec time);

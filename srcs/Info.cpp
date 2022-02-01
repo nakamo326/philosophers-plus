@@ -13,7 +13,8 @@ Info::Info(int argc, char **argv) : is_dead(false) {
 
   if (philo_num % 2 == 1)
     is_odd = true;
-  forks.reserve(philo_num);
+  // forks.reserve(philo_num);
+  forks = new std::mutex[philo_num];
 }
 
 bool Info::isInvalidRange(long num) {

@@ -14,11 +14,11 @@ struct Info {
   int fullfill_num;
   bool is_dead;
   bool is_odd;
-  std::vector<std::mutex> forks;
+  std::mutex *forks;
   std::mutex print;
 
   Info() {}
-  ~Info() {}
+  ~Info() { delete[] forks; }
 
   Info(int argc, char **argv);
 
