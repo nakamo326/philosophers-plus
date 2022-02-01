@@ -1,6 +1,6 @@
 #include "Info.hpp"
 
-Info::Info(int argc, char **argv) : is_dead(false) {
+Info::Info(int argc, char **argv) : fullfill_num(0), is_dead(false) {
   if (!(argc == 5 || argc == 6))
     throw std::length_error("arguments number is not valid.");
 
