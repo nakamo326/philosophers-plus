@@ -6,6 +6,8 @@
 #define SLEEPING " is sleeping"
 #define THINKING " is thinking"
 
+#include <sys/time.h>
+
 #include <iostream>
 #include <mutex>
 #include <thread>
@@ -25,7 +27,7 @@ struct Info {
   bool is_dead;
   bool is_odd;
   std::vector<std::mutex> forks;
-  pthread_mutex_t print;
+  std::mutex print;
 
   Info(){};
   Info() {}
