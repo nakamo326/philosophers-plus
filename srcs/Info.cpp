@@ -13,7 +13,6 @@ Info::Info(int argc, char **argv) : fullfill_num(0), is_dead(false) {
 
   if (philo_num % 2 == 1)
     is_odd = true;
-  // forks.reserve(philo_num);
   forks = new std::mutex[philo_num];
 }
 

@@ -8,8 +8,6 @@ void philo_routine(Philosopher *philo, Info *info) {
     philo->outputLog(TAKEN_FORK);
     return;
   }
-  // if (philo->index_ % 2 == 0)
-  //   myUsleep(1);
   while (!info->isDead() && !info->isFullfilled()) {
     philo->shakeForks();
     philo->eatMeal();
@@ -25,7 +23,7 @@ void doctor_routine(Philosopher *philo, Info *info) {
   long lasttime;
 
   while (!info->isDead() && !info->isFullfilled()) {
-    myUsleep(1);
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
     now = getTime();
     lasttime = philo->readLastmealTime();
     info->print.lock();

@@ -57,7 +57,7 @@ void Philosopher::releaseForks() {
 
 void Philosopher::eatMeal() {
   setLastmealTime(outputLog(EATING));
-  myUsleep(info_->time_eat);
+  std::this_thread::sleep_for(std::chrono::milliseconds(info_->time_eat));
   times_of_finished_meal_++;
   if (times_of_finished_meal_ == info_->limit_times) {
     info_->print.lock();
@@ -68,11 +68,11 @@ void Philosopher::eatMeal() {
 
 void Philosopher::sleepWell() {
   outputLog(SLEEPING);
-  myUsleep(info_->time_sleep);
+  std::this_thread::sleep_for(std::chrono::milliseconds(info_->time_sleep));
 }
 
 void Philosopher::think() {
   outputLog(THINKING);
   if (info_->is_odd && index_ % 2 == 1)
-    myUsleep(10);
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
 }
