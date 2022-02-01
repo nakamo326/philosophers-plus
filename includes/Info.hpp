@@ -20,6 +20,10 @@ struct Info {
   ~Info() {}
 
   Info(int argc, const char *argv);
+
+  private:
+  bool isInvalidRange(long num);
+  long getNum(std::string &str);
 };
 
 #endif /* PHILOSOPHERS_PLUS_INCLUDES_INFO */

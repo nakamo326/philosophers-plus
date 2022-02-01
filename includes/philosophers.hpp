@@ -9,6 +9,7 @@
 #include <sys/time.h>
 
 #include <iostream>
+#include <limits>
 #include <mutex>
 #include <thread>
 #include <vector>
