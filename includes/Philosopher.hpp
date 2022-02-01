@@ -6,15 +6,15 @@
 
 class Philosopher {
   private:
-  Info &info;
-  int index;
-  std::thread th;
-  std::thread doctor;
-  std::mutex &left;
-  std::mutex &right;
-  std::mutex access_to_last_meal;
-  millisec last_meal_time;
-  size_t times_of_finished_meal;
+  Info &info_;
+  int index_;
+  std::thread th_;
+  std::thread doctor_;
+  std::mutex *left_;
+  std::mutex *right_;
+  std::mutex access_to_last_meal_;
+  millisec last_meal_time_;
+  size_t times_of_finished_meal_;
 
   private:
   millisec getTime();
@@ -22,8 +22,10 @@ class Philosopher {
 
   public:
   Philosopher();
+  Philosopher(int index, Info &info);
   ~Philosopher();
 
+  void addIndex(int index);
   millisec outputLog(const char *str);
 };
 
