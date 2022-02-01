@@ -1,6 +1,7 @@
 #ifndef PHILOSOPHERS_PLUS_INCLUDES_PHILOSOPHER
 #define PHILOSOPHERS_PLUS_INCLUDES_PHILOSOPHER
 
+#include "Info.hpp"
 #include "philosophers.hpp"
 
 class Philosopher {
