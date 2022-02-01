@@ -2,7 +2,7 @@ NAME := philo
 
 SHELL := /bin/bash
 CXX := clang++
-CXXFLAGS := -Wall -Wextra -Werror -MMD -MP -std=c++98 -pedantic-errors -Wshadow
+CXXFLAGS := -Wall -Wextra -Werror -Wshadow -MMD -MP
 INCLUDES := -I./includes
 
 
@@ -16,7 +16,6 @@ DEPS = $(patsubst $(SRCDIR)%,$(OBJDIR)%,$(SRCFILE:.cpp=.d))
 GTESTDIR := googletest
 
 # ==== Align length to format compile message ==== #
-#ALIGN := $(shell tr ' ' '\n' <<<"$(SRCFILE)" | awk -v len=0 -F "" 'NF>len{len=NF}END{print len}')
 ALIGN := $(shell tr ' ' '\n' <<<"$(SRCFILE)" | while read line; do echo \
 	$$((`echo $$line | wc -m`)); done | awk 'm<$$1{ m=$$1} END{print m}')
 
@@ -38,12 +37,7 @@ debug: CXXFLAGS += -g -fsanitize=integer -fsanitize=address -DDEBUG
 debug: re
 
 test: $(filter-out %main.o,$(OBJS))
-	$(MAKE) -C $(GTESTDIR)
-
-cmp: CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -Wshadow -DSTD
-cmp: $(filter-out %main.o,$(OBJS)) srcs/main.cpp
-	@$(CXX) $(CXXFLAGS) $^ $(INCLUDES) -o std
-	@echo -e "flags  : $(YLW)$(CXXFLAGS)$(NC)\nbuild  : $(GRN)$^$(NC)\n=> $(BLU)std$(NC)" 
+	$(MAKE) -C $(GTESTDIR) 
 
 .PHONY: ref
 ref:
