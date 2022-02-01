@@ -4,29 +4,26 @@
 #include "philosophers.hpp"
 
 class Philosopher {
-  public:
-  using ms = long;
-
   private:
-  Info *info;
+  Info &info;
   int index;
-  pthread_t th;
-  pthread_t doctor;
+  std::thread th;
+  std::thread doctor;
   std::mutex &left;
   std::mutex &right;
   std::mutex access_to_last_meal;
-  ms last_meal_time;
-  long times_of_finished_meal;
+  millisec last_meal_time;
+  size_t times_of_finished_meal;
 
   private:
-  ms getTime();
-  void myUsleep(ms milliseconds);
+  millisec getTime();
+  void myUsleep(millisec milliseconds);
 
   public:
   Philosopher();
   ~Philosopher();
 
-  ms outputLog(const char *str);
+  millisec outputLog(const char *str);
 };
 
 #endif /* PHILOSOPHERS_PLUS_INCLUDES_PHILOSOPHER */

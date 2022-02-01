@@ -4,8 +4,8 @@ Philosopher::Philosopher() {}
 
 Philosopher::~Philosopher() {}
 
-Philosopher::ms Philosopher::outputLog(const char *str) {
-  ms time;
+millisec Philosopher::outputLog(const char *str) {
+  millisec time;
 
   time = getTime();
   if (!is_dead(p) && !is_fullfilled(p)) {
