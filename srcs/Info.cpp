@@ -24,5 +24,23 @@ long Info::getNum(std::string &str) {
   long tmp = std::atoi(str.c_str());
   if (isInvalidRange(tmp))
     throw std::range_error("input num is not valid range.");
-  return (tmp);
+  return tmp;
+}
+
+bool Info::isDead() {
+  bool ret;
+
+  print.lock();
+  ret = is_dead;
+  print.unlock();
+  return ret;
+}
+
+bool Info::isFullfilled() {
+  bool ret;
+
+  print.lock();
+  ret = (fullfill_num == philo_num);
+  print.unlock();
+  return ret;
 }

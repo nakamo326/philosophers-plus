@@ -20,6 +20,9 @@ struct Info {
 
   Info(int argc, char **argv);
 
+  bool isDead();
+  bool Info::isFullfilled();
+
   private:
   bool isInvalidRange(long num);
   long getNum(std::string &str);

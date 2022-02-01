@@ -1,16 +1,17 @@
 
+#include "Info.hpp"
 #include "Philosopher.hpp"
 
-void philo_routine(Philosopher &philo) {
+void philo_routine(Philosopher &philo, Info &info) {
   philo.setLastmealTime(getTime());
 
-  if (philo.info_.philo_num == 1) {
+  if (info.philo_num == 1) {
     output_log(p, TAKEN_FORK);
     return;
   }
   if (p->index % 2 == 0)
     my_usleep(1);
-  while (!is_dead(p) && !is_fullfilled(p)) {
+  while (!info.isDead() && !info.isFullfilled()) {
     shake_forks(p);
     eat_meal(p);
     release_forks(p);
