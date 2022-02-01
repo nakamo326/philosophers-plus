@@ -14,6 +14,11 @@
 #include <thread>
 #include <vector>
 
+#include "Philosopher.hpp"
+
 using millisec = long;
+
+void philo_routine(Philosopher &philo);
+void doctor_routine(Philosopher &philo);
 
 #endif /* PHILOSOPHERS_PLUS_INCLUDES_PHILOSOPHERS */

@@ -5,8 +5,10 @@
 #include "philosophers.hpp"
 
 class Philosopher {
-  private:
+  public:
   Info &info_;
+
+  private:
   int index_;
   std::thread th_;
   std::thread doctor_;
