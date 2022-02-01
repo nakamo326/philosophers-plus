@@ -4,6 +4,7 @@ SHELL := /bin/bash
 CXX := clang++
 CXXFLAGS := -Wall -Wextra -Werror -Wshadow -MMD -MP
 INCLUDES := -I./includes
+LIBS := -lpthread
 
 
 SRCDIR := srcs
@@ -23,7 +24,7 @@ all: $(NAME)
 -include $(DEPS)
 
 $(NAME): $(OBJS)
-	@$(CXX) $(CXXFLAGS) $^ $(INCLUDES) -o $@
+	@$(CXX) $(CXXFLAGS) $^ $(INCLUDES) $(LIBS) -o $@
 	@echo -e "flags  : $(YLW)$(CXXFLAGS)$(NC)\nbuild  : $(GRN)$^$(NC)\n=> $(BLU)$@$(NC)" 
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp

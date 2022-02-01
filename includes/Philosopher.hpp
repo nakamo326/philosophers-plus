@@ -11,7 +11,6 @@ class Philosopher {
   private:
   std::mutex *left_;
   std::mutex *right_;
-  std::mutex access_to_last_meal_;
   millisec last_meal_time_;
   int times_of_finished_meal_;
 
