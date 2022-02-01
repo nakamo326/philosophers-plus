@@ -2,11 +2,11 @@
 #include "Philosopher.hpp"
 
 void philo_routine(Philosopher &philo) {
-  philo.updateLastmealTime(getTime());
+  philo.setLastmealTime(getTime());
 
-  if (p->info->params[NUM_OF_PHILOS] == 1) {
+  if (philo.info_.philo_num == 1) {
     output_log(p, TAKEN_FORK);
-    return (NULL);
+    return;
   }
   if (p->index % 2 == 0)
     my_usleep(1);
@@ -17,7 +17,7 @@ void philo_routine(Philosopher &philo) {
     sleep_well(p);
     think_about_truth(p);
   }
-  return (NULL);
+  return;
 }
 
 void doctor_routine(Philosopher &philo) {
@@ -29,8 +29,8 @@ void doctor_routine(Philosopher &philo) {
   while (!is_dead(p) && !is_fullfilled(p)) {
     usleep(1000);
     pthread_mutex_lock(&p->info->print);
-    now = get_time();
-    lasttime = read_lastmeal_time(p);
+    now = getTime();
+    lasttime = philo.readLastmealTime();
     if (now - lasttime >= p->info->params[TIME_TO_DIE] &&
         p->info->is_dead == false) {
       printf("%ld %d died\n", now, p->index);
@@ -38,5 +38,5 @@ void doctor_routine(Philosopher &philo) {
     }
     pthread_mutex_unlock(&p->info->print);
   }
-  return (NULL);
+  return;
 }

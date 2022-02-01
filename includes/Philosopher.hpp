@@ -22,7 +22,8 @@ class Philosopher {
   ~Philosopher();
 
   millisec outputLog(const char *str);
-  void updateLastmealTime(millisec time);
+  void setLastmealTime(millisec time);
+  millisec readLastmealTime();
 };
 
 #endif /* PHILOSOPHERS_PLUS_INCLUDES_PHILOSOPHER */

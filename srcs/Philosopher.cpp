@@ -19,8 +19,16 @@ millisec Philosopher::outputLog(const char *str) {
   return (time);
 }
 
-void Philosopher::update_lastmeal_time(millisec time) {
+void Philosopher::setLastmealTime(millisec time) {
   access_to_last_meal_.lock();
   last_meal_time_ = time;
   access_to_last_meal_.unlock();
+}
+
+millisec Philosopher::readLastmealTime() {
+  millisec time;
+  access_to_last_meal_.lock();
+  time = last_meal_time_;
+  access_to_last_meal_.unlock();
+  return time;
 }
