@@ -26,9 +26,9 @@ void doctor_routine(Philosopher *philo, Info *info) {
 
   while (!info->isDead() && !info->isFullfilled()) {
     myUsleep(1000);
-    info->print.lock();
     now = getTime();
     lasttime = philo->readLastmealTime();
+    info->print.lock();
     if (now - lasttime >= info->time_die && info->is_dead == false) {
       printf("%ld %d died\n", now, philo->index_);
       info->is_dead = true;
