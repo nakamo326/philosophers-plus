@@ -1,6 +1,4 @@
-
-#include "Info.hpp"
-#include "Philosopher.hpp"
+#include "philosophers.hpp"
 
 void philo_routine(Philosopher &philo, Info &info) {
   philo.setLastmealTime(getTime());

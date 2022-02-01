@@ -3,6 +3,8 @@
 
 #include "philosophers.hpp"
 
+using millisec = long;
+
 struct Info {
   int philo_num;
   millisec time_die;
@@ -21,7 +23,7 @@ struct Info {
   Info(int argc, char **argv);
 
   bool isDead();
-  bool Info::isFullfilled();
+  bool isFullfilled();
 
   private:
   bool isInvalidRange(long num);

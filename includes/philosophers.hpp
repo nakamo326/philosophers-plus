@@ -14,6 +14,7 @@
 #include <thread>
 #include <vector>
 
+#include "Info.hpp"
 #include "Philosopher.hpp"
 
 using millisec = long;
@@ -21,7 +22,7 @@ using millisec = long;
 millisec getTime();
 void myUsleep(millisec milliseconds);
 
-void philo_routine(Philosopher &philo);
-void doctor_routine(Philosopher &philo);
+void philo_routine(Philosopher &philo, Info &info);
+void doctor_routine(Philosopher &philo, Info &info);
 
 #endif /* PHILOSOPHERS_PLUS_INCLUDES_PHILOSOPHERS */

@@ -1,5 +1,4 @@
-#include "Info.hpp"
-#include "Philosopher.hpp"
+#include "philosophers.hpp"
 
 void sims(std::vector<Philosopher> &philos, Info &info) {
   std::vector<std::thread> philo_threads;

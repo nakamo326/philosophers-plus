@@ -1,7 +1,7 @@
 #include "Philosopher.hpp"
 
 Philosopher::Philosopher(int index, Info &info)
-    : index_(index), info_(info), times_of_finished_meal_(0) {
+    : info_(info), index_(index), times_of_finished_meal_(0) {
   int i = index - 1;
   left_ = &info.forks[i];
   right_ = &info.forks[(i + info.philo_num - 1) % info.philo_num];

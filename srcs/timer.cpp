@@ -1,4 +1,4 @@
-#include "Philosopher.hpp"
+#include "philosophers.hpp"
 
 millisec getTime() {
   struct timeval tp;
