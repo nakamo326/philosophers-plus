@@ -9,9 +9,8 @@ void sims(std::vector<Philosopher> &philos, Info &info) {
 
   for (int i = 0; i < num; i++) {
     philo_threads.push_back(std::thread(philo_routine, &philos[i], &info));
-    philo_threads.push_back(std::thread(doctor_routine, &philos[i], &info));
+    doctor_threads.push_back(std::thread(doctor_routine, &philos[i], &info));
   }
-
   for (int i = 0; i < num; i++) {
     philo_threads[i].join();
     doctor_threads[i].join();

@@ -25,7 +25,7 @@ void doctor_routine(Philosopher *philo, Info *info) {
   long lasttime;
 
   while (!info->isDead() && !info->isFullfilled()) {
-    myUsleep(1000);
+    myUsleep(1);
     now = getTime();
     lasttime = philo->readLastmealTime();
     info->print.lock();
