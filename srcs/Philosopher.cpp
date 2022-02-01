@@ -3,10 +3,7 @@
 #include "Info.hpp"
 
 Philosopher::Philosopher()
-    : info_(nullptr),
-      index_(0),
-      left_(nullptr),
-      right_(nullptr),
+    : info_(nullptr), index_(0), left_(nullptr), right_(nullptr),
       times_of_finished_meal_(0) {}
 
 Philosopher::Philosopher(int index, Info *info)
@@ -17,15 +14,13 @@ Philosopher::Philosopher(int index, Info *info)
 }
 
 millisec Philosopher::outputLog(const char *str) {
-  millisec time;
-
-  time = getTime();
+  millisec time = getTime();
   if (!info_->isDead() && !info_->isFullfilled()) {
     info_->print.lock();
     printf("%ld %d%s\n", time, index_, str);
     info_->print.unlock();
   }
-  return (time);
+  return time;
 }
 
 void Philosopher::setLastmealTime(millisec time) {
@@ -35,9 +30,8 @@ void Philosopher::setLastmealTime(millisec time) {
 }
 
 millisec Philosopher::readLastmealTime() {
-  millisec time;
   info_->print.lock();
-  time = last_meal_time_;
+  millisec time = last_meal_time_;
   info_->print.unlock();
   return time;
 }

@@ -54,10 +54,7 @@ fclean: clean
 re: fclean
 	$(MAKE) all
 
-run: all
-	./$(NAME)
-
-.PHONY: all clean fclean re debug test cmp run
+.PHONY: all clean fclean re debug test cmp
 
 # ==== Color define ==== #
 YLW := \033[33m

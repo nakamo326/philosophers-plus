@@ -29,19 +29,15 @@ long Info::getNum(std::string &str) {
 }
 
 bool Info::isDead() {
-  bool ret;
-
   print.lock();
-  ret = is_dead;
+  bool ret = is_dead;
   print.unlock();
   return ret;
 }
 
 bool Info::isFullfilled() {
-  bool ret;
-
   print.lock();
-  ret = (fullfill_num == philo_num);
+  bool ret = (fullfill_num == philo_num);
   print.unlock();
   return ret;
 }
