@@ -20,13 +20,6 @@ bool	is_fullfilled(t_philo *p)
 	return (ret);
 }
 
-void	update_lastmeal_time(long time, t_philo *p)
-{
-	pthread_mutex_lock(&p->access_to_last_meal);
-	p->last_meal_time = time;
-	pthread_mutex_unlock(&p->access_to_last_meal);
-}
-
 long	read_lastmeal_time(t_philo *p)
 {
 	long	ret;

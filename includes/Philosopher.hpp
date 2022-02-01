@@ -16,17 +16,13 @@ class Philosopher {
   millisec last_meal_time_;
   size_t times_of_finished_meal_;
 
-  private:
-  millisec getTime();
-  void myUsleep(millisec milliseconds);
-
   public:
   Philosopher();
   Philosopher(int index, Info &info);
   ~Philosopher();
 
-  void addIndex(int index);
   millisec outputLog(const char *str);
+  void updateLastmealTime(millisec time);
 };
 
 #endif /* PHILOSOPHERS_PLUS_INCLUDES_PHILOSOPHER */

@@ -1,13 +1,13 @@
 #include "Philosopher.hpp"
 
-millisec Philosopher::getTime() {
+millisec getTime() {
   struct timeval tp;
 
   gettimeofday(&tp, NULL);
   return tp.tv_sec * 1000 + tp.tv_usec / 1000;
 }
 
-void Philosopher::myUsleep(millisec milliseconds) {
+void myUsleep(millisec milliseconds) {
   long start;
 
   start = getTime();

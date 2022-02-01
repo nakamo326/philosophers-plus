@@ -18,6 +18,9 @@
 
 using millisec = long;
 
+millisec getTime();
+void myUsleep(millisec milliseconds);
+
 void philo_routine(Philosopher &philo);
 void doctor_routine(Philosopher &philo);
 
