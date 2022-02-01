@@ -10,8 +10,6 @@ class Philosopher {
 
   private:
   int index_;
-  std::thread th_;
-  std::thread doctor_;
   std::mutex *left_;
   std::mutex *right_;
   std::mutex access_to_last_meal_;
