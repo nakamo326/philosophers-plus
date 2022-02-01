@@ -8,8 +8,8 @@ void philo_routine(Philosopher *philo, Info *info) {
     philo->outputLog(TAKEN_FORK);
     return;
   }
-  if (philo->index_ % 2 == 0)
-    myUsleep(1);
+  // if (philo->index_ % 2 == 0)
+  //   myUsleep(1);
   while (!info->isDead() && !info->isFullfilled()) {
     philo->shakeForks();
     philo->eatMeal();
@@ -29,8 +29,8 @@ void doctor_routine(Philosopher *philo, Info *info) {
     now = getTime();
     lasttime = philo->readLastmealTime();
     info->print.lock();
-    if (now - lasttime >= info->time_die && info->is_dead == false) {
-      printf("%ld %d died\n", now, philo->index_);
+    if (now - lasttime >= info->time_die && !info->is_dead) {
+      std::cout << now << " " << philo->index_ << " died" << std::endl;
       info->is_dead = true;
     }
     info->print.unlock();

@@ -17,7 +17,7 @@ millisec Philosopher::outputLog(const char *str) {
   millisec time = getTime();
   if (!info_->isDead() && !info_->isFullfilled()) {
     info_->print.lock();
-    printf("%ld %d%s\n", time, index_, str);
+    std::cout << time << " " << index_ << str << std::endl;
     info_->print.unlock();
   }
   return time;
